@@ -27,6 +27,10 @@ void ofApp::update(){
     // Ask the grabber to refresh its data
     myVideoGrabber.update();
     
+    // Initialise the effectMultiplier factor
+    effectMultiplier = ofGetFrameNum() / 2;
+    cout << effectMultiplier << endl; // Send the value of effectMultiplier to the console
+    
     // If the grabber indeed has gresh data,
     if (myVideoGrabber.isFrameNew()){
         
@@ -39,8 +43,11 @@ void ofApp::update(){
             
             // PixelData[i] is the i'th byte of the image;
             // Subtract it from 255, to make a "photo negative"
+            // Add in the multiplier to reveal how the image is being updated
+            // colour by colour in the application
+            // Change the sign to - to reverse direction of colour flow
             
-            invertedVideoData[i]=     255 - pixelData[i];
+            invertedVideoData[i]= 255 - pixelData[i] + effectMultiplier;
             }
         
         // Now stash the inverted data in an ofTexture

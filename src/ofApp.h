@@ -21,9 +21,8 @@ class ofApp : public ofBaseApp{
     unsigned char*  invertedVideoData;
     int camWidth;
     int camHeight;
+    float effectMultiplier; // a modifier to mess with the negative subtraction
     
-    
-
     
 		void keyPressed(int key);
 		void keyReleased(int key);
